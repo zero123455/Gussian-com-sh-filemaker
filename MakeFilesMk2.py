@@ -138,7 +138,7 @@ def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
 PROCESSORS = 8
 RAM = 32    
 ROOT_DIR = os.getcwd()
-USERNAME = "def-orgiurg"
+USERNAME = "username"
 
 try:
     glob.iglob(ROOT_DIR + '\**\*opt.com', recursive=True)
