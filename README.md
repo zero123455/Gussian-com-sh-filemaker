@@ -1,7 +1,7 @@
 # Gussian-com-sh-filemaker
 ## Warning: The input file must have a '_opt' within its file name and this is not designed to work with manually altered opt.com files when using the 'opt' option within the program. 
 ### Diclaimer: If you ignore the warning, this program can break the opt.com file by deleting half of the z-matrix from the .com file
-#### Sizenote: remember to change the USERNAME variable in the program if the .sh function is needed
+#### Sizenote: remember to change the USERNAME variable in the program if the .sh function is needed also by default uses the wb97xd/6-31+g(d,p) set and an ultrafine grid. If other sets and grid are required go in the functions named 'OptFormat' and 'comsFileformat' and change them. 
 
 Program works on output gaussian-view files storing information in z matrix form for the 'opt' option
 
