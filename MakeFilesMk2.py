@@ -63,7 +63,7 @@ def generateSh(f_name,f_type,processor,ram,user_name):
     f = open(f"{f_name}_{f_type}.sh","w",newline="\n")
     f.write(output)  
      
-def writeComs(FileType,FileEnding,sys_charge,e_multi,cpu,meme,user_name,wantSh='n'):
+def writeComs(FileType,FileEnding,sys_charge,e_multi,user_name,cpu,meme,wantSh='n'):
     for filename in glob.iglob(ROOT_DIR + '\**\*opt.com',recursive=True):
         filename = os.path.basename(filename).split('.')[0]
         if FileEnding == '.sh':
@@ -138,7 +138,7 @@ def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
 PROCESSORS = 8
 RAM = 32    
 ROOT_DIR = os.getcwd()
-USERNAME = "username"
+USERNAME = "def-orgiurg"
 
 try:
     glob.iglob(ROOT_DIR + '\**\*opt.com', recursive=True)
