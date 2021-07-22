@@ -118,6 +118,7 @@ def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
         f = open(filename).readlines()
         InterestedIndex = [i for i,val in enumerate(f) if val=='\n']
         if len(InterestedIndex) == 4:
+            f[2]=f"%chk={os.path.basename(filename).split('.')[0]}.chk\n"
             f[7]=f"{sys_charge} {e_multi}\n"
             output=str()
             for i in f:
@@ -138,7 +139,7 @@ def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
 PROCESSORS = 8
 RAM = 32    
 ROOT_DIR = os.getcwd()
-USERNAME = "user-name"
+USERNAME = "def-orgiurg"
 
 try:
     glob.iglob(ROOT_DIR + '\**\*opt.com', recursive=True)
