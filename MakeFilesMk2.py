@@ -49,7 +49,7 @@ def shFileformat(name,function,uName,cpu=12,meme=96):
     name=name.replace("_opt","")
     text = "#!/bin/bash\n"\
             f"#SBATCH --mem={meme}G\n"\
-            "#SBATCH --time=06-23:59\n"\
+            "#SBATCH --time=02-23:59\n"\
             f"#SBATCH --account={uName}\n"\
             f"#SBATCH --cpus-per-task={cpu}\n"\
             "module load gaussian/g09.e01\n"\
@@ -118,6 +118,8 @@ def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
         f = open(filename).readlines()
         InterestedIndex = [i for i,val in enumerate(f) if val=='\n']
         if len(InterestedIndex) == 4:
+            f[0]=f"%nprocshared={cpu}\n"
+            f[1]=f"%mem={meme-4}GB\n"
             f[2]=f"%chk={os.path.basename(filename).split('.')[0]}.chk\n"
             f[7]=f"{sys_charge} {e_multi}\n"
             output=str()
@@ -139,7 +141,7 @@ def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
 PROCESSORS = 8
 RAM = 32    
 ROOT_DIR = os.getcwd()
-USERNAME = "UserName"
+USERNAME = "user-name"
 
 try:
     glob.iglob(ROOT_DIR + '\**\*opt.com', recursive=True)
