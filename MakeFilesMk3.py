@@ -6,7 +6,7 @@ Please acknowledge if using this script for research activities
 """
 import os
 import glob
-def comsFileformat(name,charge,multi,function,cpu=12,meme=92):
+def comsFileformat(name,charge,multi,function,cpu,meme):
     """
     Function containing standard format used for the .com file
     input:
@@ -14,8 +14,8 @@ def comsFileformat(name,charge,multi,function,cpu=12,meme=92):
         charge: system charge
         multi: e- multiplicity
         function: the purpose of the generating .com file
-        cpu: number of cores - defaults 12 cores
-        meme: how much ram - defaults 92 GB
+        cpu: number of cores 
+        meme: how much ram 
     output:
         string with all the relivent parameters filled in
     """
@@ -35,14 +35,14 @@ def comsFileformat(name,charge,multi,function,cpu=12,meme=92):
     return(text)    
     
 
-def shFileformat(name,function,uName,cpu=12,meme=96):
+def shFileformat(name,function,uName,cpu,meme):
     """
     Contains standard format of .sh
     input:
         name: filename of opt.com 
         function: the purpose of the generating .sh file
-        cpu: number of cores - defaults 12 cores
-        meme: how much ram - defaults 96 GB
+        cpu: number of cores 
+        meme: how much ram 
     output:
         string with all the relivent parameters filled in
     """
@@ -63,9 +63,9 @@ def generateSh(f_name,f_type,processor,ram,user_name):
     f = open(f"{f_name}_{f_type}.sh","w",newline="\n")
     f.write(output)  
      
-def writeComs(FileType,FileEnding,sys_charge,e_multi,user_name,cpu,meme,wantSh='n'):
+def writeComs(FileType,FileEnding,sys_charge,e_multi,user_name,cpu,meme,wantSh):
     for filename in glob.iglob(ROOT_DIR + '\**\*opt.com',recursive=True):
-        if os.path.basename(filename).split('.')[1] =='.py':
+        if os.path.basename(filename).split('.')[1] !='.com':
             continue
         filename = os.path.basename(filename).split('.')[0]
         if FileEnding == '.sh':
@@ -79,15 +79,15 @@ def writeComs(FileType,FileEnding,sys_charge,e_multi,user_name,cpu,meme,wantSh='
                 generateSh(filename,FileType,cpu,meme,user_name)
 
 
-def WriteOptComs(sys_charge,e_multi,user_name,cpu=12,meme=92,wantSh='n'):
+def WriteOptComs(sys_charge,e_multi,user_name,cpu,meme,wantSh='n'):
     """
     Generates opt.com removing the redundant informations (connection list)
     and appends parameters requires for specifly calculation
     input:
         sys_charge: charge of the system
         e_multi: e- multiplicity of the system
-        cpu: number of cores defaults 12 cores
-        meme: amount of ram defaults 92 GB
+        cpu: number of cores
+        meme: amount of ram 
         wantSh: storing if user wants to also generates the corresponding sh file
     output:
         com file with all correct input parameters for the cluster
