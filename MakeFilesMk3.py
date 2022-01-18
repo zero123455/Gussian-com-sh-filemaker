@@ -65,6 +65,8 @@ def generateSh(f_name,f_type,processor,ram,user_name):
      
 def writeComs(FileType,FileEnding,sys_charge,e_multi,user_name,cpu,meme,wantSh='n'):
     for filename in glob.iglob(ROOT_DIR + '\**\*opt.com',recursive=True):
+        if os.path.basename(filename).split('.')[1] =='.py':
+            continue
         filename = os.path.basename(filename).split('.')[0]
         if FileEnding == '.sh':
             generateSh(filename,FileType,cpu,meme,user_name)
